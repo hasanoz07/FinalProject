@@ -9,40 +9,35 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
+            //Data Transformation Object = DTO
+            ProductTest();
+            //CategoryTest();
+
+
+        }
+
+        private static void CategoryTest()
+        {
+            CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
+            foreach (var category in categoryManager.GetAll())
+            {
+                Console.WriteLine(category.CategoryName);
+            }
+        }
+
+        private static void ProductTest()
+        {
             ProductManager productManager = new ProductManager(new EfProductDal());
-            /*
-            foreach (var product in productManager.GetAll())
+
+            foreach (var product in productManager.GetProductDetails())
             {
-                
+
                 Console.WriteLine("Ürün ismi : " + product.ProductName);
-                Console.WriteLine("Ürün fiyatı : " + product.UnitPrice);
+                Console.WriteLine("Ürün fiyatı : " + product.CategoryName);
                 Console.WriteLine("Ürün stoğu : " + product.UnitsInStock);
                 Console.WriteLine("------------------------------");
 
             }
-            */
-            /*
-            foreach (var product in productManager.GetAllByCategory(2))
-            {
-
-                Console.WriteLine("Ürün ismi : " + product.ProductName);
-                Console.WriteLine("Ürün fiyatı : " + product.UnitPrice);
-                Console.WriteLine("Ürün stoğu : " + product.UnitsInStock);
-                Console.WriteLine("------------------------------");
-
-            }
-            */
-            foreach (var product in productManager.GetByUnitPrice(10,25))
-            {
-
-                Console.WriteLine("Ürün ismi : " + product.ProductName);
-                Console.WriteLine("Ürün fiyatı : " + product.UnitPrice);
-                Console.WriteLine("Ürün stoğu : " + product.UnitsInStock);
-                Console.WriteLine("------------------------------");
-
-            }
-
-
         }
     }
 }
