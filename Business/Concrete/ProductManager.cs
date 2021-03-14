@@ -28,13 +28,13 @@ namespace Business.Concrete
                 return new ErrorResult(Messages.ProductNameInvalid);
             } 
             _productDal.Add(product);
-            return new Result(true, Messages.ProductAdded);
+            return new SuccessResult( Messages.ProductAdded);
 
         }
 
         public IDataResult<List<Product>> GetAll()
         {
-            if (DateTime.Now.Hour==22)
+            if (DateTime.Now.Hour==15)
             {
                 return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
             }
